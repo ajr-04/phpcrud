@@ -1,7 +1,11 @@
-<?php
+<?php 
+    
 require_once('classes/database.php');
 
 $con = new database();
+
+session_start();
+
 
 if (isset($_POST['Login'])) {
     $username = $_POST['user'];
@@ -13,6 +17,7 @@ if (isset($_POST['Login'])) {
         ['user_pass'] == $_POST['pass']) {
             $_SESSION['username'] = $result['user_name'];
             header('location:index.php');
+            $_SESSION['username'] = $result['user_name'];
         } else {
             echo 'An error has occured';
         }
