@@ -68,7 +68,6 @@ if (isset($_POST['multisave'])) {
 
 </head>
 <body>
-<?php include('includes/navbar.php');?> 
 
 <div class="container custom-container rounded-3 shadow my-5 p-3 px-5">
   <h3 class="text-center mt-4"> Registration Form</h3>

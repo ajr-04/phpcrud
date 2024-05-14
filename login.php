@@ -5,8 +5,10 @@ require_once('classes/database.php');
 $con = new database();
 
 session_start();
-
-
+if (isset($_SESSION['username'])){
+  header ('location:index.php');
+}
+ 
 if (isset($_POST['Login'])) {
     $username = $_POST['user'];
     $password = $_POST['pass'];
