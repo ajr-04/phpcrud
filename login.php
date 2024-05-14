@@ -19,7 +19,7 @@ if (isset($_POST['Login'])) {
         ['user_pass'] == $_POST['pass']) {
             $_SESSION['username'] = $result['user_name'];
             header('location:index.php');
-            $_SESSION['username'] = $result['user_name'];
+            
         } else {
             echo 'An error has occured';
         }
