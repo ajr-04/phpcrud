@@ -69,7 +69,6 @@ if (isset($_POST['signup'])) {
         <option selected disabled>Select your sex</option>
         <option value="M">Male</option>
         <option value="F">Female</option>
-        <option value="N/A">Prefer not to say</option>
       </select>
     </div>
     </div>
