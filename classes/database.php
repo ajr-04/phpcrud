@@ -127,4 +127,12 @@ ini_set('display_errors', 1);
             return false;
         }
     }
-}
+    
+    function getusercount()
+    {
+        $con = $this->opencon();
+        return $con->query("SELECT SUM(CASE WHEN user_sex = 'Male' THEN 1 ELSE 0 END) AS male_count,
+        SUM(CASE WHEN user_sex = 'Female' THEN 1 ELSE 0 END) AS female_count FROM users;")->fetch();
+    }
+    
+    }
