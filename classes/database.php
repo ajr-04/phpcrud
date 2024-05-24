@@ -135,4 +135,35 @@ ini_set('display_errors', 1);
         SUM(CASE WHEN user_sex = 'Female' THEN 1 ELSE 0 END) AS female_count FROM users;")->fetch();
     }
     
+    function checkEmailExists($email) {
+        $con = $this->opencon();
+        $query = $this->$con->prepare("SELECT user_email FROM users WHERE user_email = ?");
+        $query->execute([$email]);
+        return $query->fetch();
+    }
+    
+    function validateCurrentPassword($userId, $currentPassword) {
+        // Open database connection
+        $con = $this->opencon();
+    
+        // Prepare the SQL query
+        $query = $con->prepare("SELECT user_pass FROM users WHERE user_id = ?");
+        $query->execute([$userId]);
+    
+        // Fetch the user data as an associative array
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+    
+        // If a user is found, verify the password
+        if ($user && password_verify($currentPassword, $user['user_pass'])) {
+            return true;
+        }
+    
+        // If no user is found or password is incorrect, return false
+        return false;
+    }
+    function updatePassword($userId, $hashedPassword) {
+        $con = $this->opencon();
+        $query = $con->prepare("UPDATE users SET user_pass = ? WHERE user_id = ?");
+        return $query->execute([$hashedPassword, $userId]);
+    }
     }

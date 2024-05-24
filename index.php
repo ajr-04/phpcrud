@@ -5,8 +5,10 @@ require_once('classes/database.php');
 $con = new database();
 
 session_start();
-if (empty($_SESSION['username'])){
-  header ('location:login.php');
+
+if (!isset($_SESSION['username']) || $_SESSION['account_type'] != 0) {
+  header('location:login.php');
+  exit();
 }
 
 
