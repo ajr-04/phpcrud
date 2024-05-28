@@ -1,0 +1,36 @@
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    course_description TEXT NOT NULL
+);
+
+INSERT INTO courses (course_name, course_description) VALUES
+('Introduction to Computer Science', 'A beginner course on the fundamentals of computer science.'),
+('Data Structures', 'An intermediate course on data structures such as arrays, lists, stacks, and queues.'),
+('Web Development', 'A comprehensive course on building websites and web applications using HTML, CSS, and JavaScript.'),
+('Database Management', 'An advanced course on database design, SQL, and database management systems.');
+
+CREATE TABLE enrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    course_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+
+ <link rel="stylesheet" href="sweetalert/src/sweetalert.css">
+   <link rel="stylesheet" href="sweetalert/src/sweetalert.js">
+
+
+   Download SweetAlert Files:
+
+Go to the SweetAlert GitHub repository.
+Click on the "Code" button and select "Download ZIP".
+Extract the ZIP file to your project directory.
+Include SweetAlert Files in Your Project:
+
+Copy the sweetalert.min.js and sweetalert.css files from the extracted folder to a suitable location in your project directory, for example, js/ and css/ directories respectively.
+Reference SweetAlert Files in Your HTML:
+
+Include the SweetAlert JavaScript and CSS files in your HTML file. Make sure the paths to the files are correct.
